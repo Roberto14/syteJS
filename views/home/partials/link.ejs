@@ -1,0 +1,43 @@
+<!-- photo article -->
+<article id="<%= post.slug %>">
+
+    <h2>
+        <span class="post_title_icon"></span>
+        <a href="#<%= post.slug %>"><%= post.title %></a>
+    </h2>
+
+    <!-- postmeta -->
+    <div class="postmeta">
+        <% var date = new Date(post.date).toDateString().split(' '); %>
+        <span><i class="fa fa-clock-o"></i> <%- date[1] + " " + date[2] + ", " + date[3]%></span>
+        <span><i class="fa fa-user"></i> Posted by <%= post.blog_name%></span>
+        <span><i class="fa fa-retweet"></i> <a href="http://www.tumblr.com/reblog/<%=post.id%>/<%=post.reblog_key%>" target="_blank"  title="Reblog on Tumblr">Reblog</a></span>
+        <span><i class="fa fa-reply-all"></i> <a href="<%=post.post_url%>#notes" target="_blank" title="Post Notes"><%=post.note_count%> notes</a></span>
+    </div>
+    <!-- postmeta -->
+
+    <!-- entry-content -->
+    <div class="entry-content clearfix">
+        <div class="entry-colors"><div class="color_col_1"></div><div class="color_col_2"></div><div class="color_col_3"></div></div>
+
+        <!-- begin post icon -->
+        <div class="icon">
+            <i class="fa fa-link fa-2x"></i>
+        </div>
+        <!-- end post icon -->
+
+        <!--<img src="<%=post.link_image%>" alt="<%=post.slug%>"/> -->
+        <%-post.description%>
+        <h3><i><a href="<%=post.url%>"><%=post.url%></a></i></h3>
+
+        <div class="tags">
+            <% post.tags.forEach(function(tag){%>
+            <span><a href="#">#<%= tag%></a></span>
+            <% }) %>
+        </div>
+
+
+    </div>
+    <!-- entry-content -->
+</article>
+<!-- photo article -->

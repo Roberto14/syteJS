@@ -10,16 +10,15 @@
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="(keywords)">
+    <meta name="description" content="(descrição)">
 
-    <!--
+    <!-- AddThis Code -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e4f3357a0a8a15"></script>
 
-      Stylesheets
-      ========================
-
-      You can link any CSS, LESS, or image files in your `assets` directory
-      as you would normally: using <link/> tags.
-      
-    -->
+    <!-- main stylesheet -->
+    <link rel="stylesheet" media="all" href="styles/moments/style.css">
+    <!-- main stylesheet -->
 
     <!--
 
@@ -36,21 +35,51 @@
   </head>
 
   <body>
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
 
-    <!-- Include the view file for the current controller/route -->
-    <%- body %>
+    <div class="main-container">
 
+        <!-- navigation -->
+        <%- partial('navigation.ejs')%>
 
-    <!--
+        <div class="main wrapper clearfix">
 
-      Client-side Javascript
-      ========================
+            <!-- header -->
+            <!-- featured article -->
+            <section class="featured">
 
-      You can import any js files in your `assets` directory as you would 
-      normally: using <script></script> tags.
+                <article class="post-68 post type-post status-publish format-gallery sticky hentry category-thoughts">
+                    <header>
+                        <!-- begin postmeta -->
+                        <div class="postmeta">
+                            <span><i class="fa fa-clock-o"></i> Dec 6, 2013</span>
+                            <span><i class="fa fa-user"></i> Posted by Mark Johnson</span>
+                            <span><i class="fa fa-bookmark"></i> <a href="http://demo.s5themes.com/moments/category/thoughts/" title="View all posts in Thoughts">Thoughts</a></span>
+                            <span><i class="fa fa-comments"></i> <a href="http://demo.s5themes.com/moments/2013/12/06/creating-great-experiences-for-web-and-mobile/#respond" title="Comment on CREATING GREAT EXPERIENCES FOR WEB AND MOBILE">0 comments</a></span>
+                        </div>
+                        <!-- end postmeta -->
 
-      Here's an example of importing a few dependencies, in order:
-    -->
+                        <!-- begin post icon -->
+                        <div class="icon">
+                            <i class="fa fa-picture-o fa-2x"></i>
+                        </div>
+                        <!-- end post icon -->
+
+                        <h1><a href="http://demo.s5themes.com/moments/2013/12/06/creating-great-experiences-for-web-and-mobile/">CREATING GREAT EXPERIENCES FOR WEB AND MOBILE</a></h1>
+                        <a class="featured_post">Featured Post</a>
+
+                    </header>
+                </article>
+
+            </section>
+            <!-- featured article -->
+            <!-- Include the view file for the current controller/route -->
+            <%- body %>
+        </div>
+    </div>
+
     <!-- Bring in the socket.io client -->
     <script type="text/javascript" src="/js/socket.io.js"></script>
     <!-- then beef it up with some convenience logic for talking to Sails.js -->
@@ -58,39 +87,28 @@
     <!-- listen on socket.io for incoming messages -->
     <script type="text/javascript" src="/js/app.js"></script>
 
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
-    <!-- Your scripts here? -->
+    <!-- begin footer-container -->
+    <div class="footer-container">
+        <footer class="wrapper">
 
-
-    <!--
-
-      Looking for client-side CoffeeScript or TypeScript?
-      ================================================
-
-      CoffeeScript and TypeScript precompilation are not installed by default,
-      but if you'd like to mix those features in, it is straightforward to
-      `npm install` the relevant grunt community modules and modify your Gruntfile
-      to use them.
-
-    -->
-
-
-
-    <!--
-
-      Another way: The Asset Linker
-      ========================
-
-      Sails supports a Grunt-based asset linker, to automatically inject 
-      <link> and <script> tags, as well any client-side templates you're using
-      into your HTML layouts and views, respecting dependencies.
-
-      You created this Sails app with the asset linker disabled.
-      If you change your mind, check out the docs on the subject:
-      http://sailsjs.org/#!documentation/asset-management
-
-    -->
+            <!-- social stuff -->
+            <div id="social" class="widget">
+                <a href="mailto:"><i class="fa fa-envelope fa-2"></i></a>
+                <a href=""><i class="fa fa-twitter fa-2"></i></a>
+                <a href=""><i class="fa fa-dribbble fa-2"></i></a>
+                <a href=""><i class="fa fa-facebook-square fa-2"></i></a>
+                <a href=""><i class="fa fa-vimeo-square fa-2"></i></a>
+                <a href=""><i class="fa fa-linkedin fa-2"></i></a>
+                <a href=""><i class="fa fa-github fa-2"></i></a>
+                <a href=""><i class="fa fa-rss fa-2"></i></a>
+            </div>
+            <!-- end social stuff -->
+            <!-- Copyright & Credits-->
+            <br>Theme by <a href="http://www.s5themes.com/">Site5 WordPress Themes</a>. <br />SiteJS empowered by SailsJS.
+            <!-- Copyright & Credits-->
+        </footer>
+    </div>
+    <!-- end footer-container -->
 
     </body>
 </html>

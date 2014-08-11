@@ -19,7 +19,7 @@ module.exports = {
 
     index: function(req, res) {
 
-
+        this.title = 'IndexPage - ' + sails.config.appName;
 
         /*Tumblr.test({},{},function(err, res){
          console.log(err,res);
@@ -28,8 +28,9 @@ module.exports = {
 
 
         TumblrPost.find({}).exec(function(err, result){
-            console.log(result);
+            console.log(result[result.length-6]);
             return res.view({
+                title: this.title,
                 data: [1,2],
                 posts: result
             });
@@ -40,10 +41,6 @@ module.exports = {
 
     like: function(req, res) {
         console.log('like');
-    },
-
-    puceta: function(req, res){
-        console.log('puceta');
     },
 
 
