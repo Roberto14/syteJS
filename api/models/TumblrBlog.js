@@ -9,8 +9,8 @@
 module.exports = {
     adapter: 'tumblr',
 
-    test: function(a,b,c){
-        return c('','success');
+    info: function(cb){
+        return this.find({}).exec(cb);
     }
 
 

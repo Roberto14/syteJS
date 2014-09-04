@@ -3,8 +3,8 @@
 
     <h2>
         <span class="post_title_icon"></span>
-        <a href="#<%= post.slug %>">
-            <%= post.caption.replace(/<(?:.|\n)*?>/gm, '')%>
+        <a href="/blog/post/<%= post.id %>">
+            <%= post.caption.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) + (post.caption.length > 40 ? " ..." : "") %>
         </a>
     </h2>
 
@@ -15,6 +15,7 @@
         <span><i class="fa fa-user"></i> Posted by <%= post.blog_name%></span>
         <span><i class="fa fa-retweet"></i> <a href="http://www.tumblr.com/reblog/<%=post.id%>/<%=post.reblog_key%>" target="_blank"  title="Reblog on Tumblr">Reblog</a></span>
         <span><i class="fa fa-reply-all"></i> <a href="<%=post.post_url%>#notes" target="_blank" title="Post Notes"><%=post.note_count%> notes</a></span>
+        <span><i class="fa fa-comments-o"></i><a href="/blog/post/<%= post.id %>#disqus_thread">Comments</a></span>
     </div>
     <!-- postmeta -->
 
@@ -36,7 +37,7 @@
 
         <div class="tags">
             <% post.tags.forEach(function(tag){%>
-            <span><a href="#">#<%= tag%></a></span>
+            <span><a href="/blog/tagged/<%= tag %>">#<%= tag%></a></span>
             <% }) %>
         </div>
 

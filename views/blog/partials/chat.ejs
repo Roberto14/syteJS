@@ -3,7 +3,7 @@
 
     <h2>
         <span class="post_title_icon"></span>
-        <a href="#<%= post.slug %>"><%= post.title %></a>
+        <a href="/blog/post/<%= post.id %>"><%= post.title ? post.title : "Chat" %></a>
     </h2>
 
     <!-- postmeta -->
@@ -13,7 +13,7 @@
         <span><i class="fa fa-user"></i> Posted by <%= post.blog_name%></span>
         <span><i class="fa fa-retweet"></i> <a href="http://www.tumblr.com/reblog/<%=post.id%>/<%=post.reblog_key%>" target="_blank"  title="Reblog on Tumblr">Reblog</a></span>
         <span><i class="fa fa-reply-all"></i> <a href="<%=post.post_url%>#notes" target="_blank" title="Post Notes"><%=post.note_count%> notes</a></span>
-        <!--<span><i class="fa fa-share"></i>Share This</span>-->
+        <span><i class="fa fa-comments-o"></i><a href="/blog/post/<%= post.id %>#disqus_thread">Comments</a></span>
     </div>
     <!-- postmeta -->
 
@@ -23,16 +23,21 @@
 
         <!-- begin post icon -->
         <div class="icon">
-            <i class="fa fa-pencil fa-2x"></i>
+            <i class="fa fa-comments fa-2x"></i>
         </div>
         <!-- end post icon -->
 
-        <%-post.body%>
-        <p><a href="<%=post.short_url%>" class="more-link">Read More</a></p>
+       <blockquote style="font-style: normal">
+            <ul class="chat">
+            <% post.dialogue.forEach(function(entry){%>
+                <li><strong><%=entry.name%></strong>: &nbsp;<%=entry.phrase%></li>
+            <% }) %>
+            </ul>
+        </blockquote>
 
         <div class="tags">
             <% post.tags.forEach(function(tag){%>
-            <span><a href="">#<%= tag%></a></span>
+            <span><a href="/blog/tagged/<%= tag %>">#<%= tag%></a></span>
             <% }) %>
         </div>
     </div>

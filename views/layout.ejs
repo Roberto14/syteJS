@@ -13,11 +13,8 @@
     <meta name="keywords" content="(keywords)">
     <meta name="description" content="(descrição)">
 
-    <!-- AddThis Code -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53e4f3357a0a8a15"></script>
-
     <!-- main stylesheet -->
-    <link rel="stylesheet" media="all" href="styles/moments/style.css">
+    <link rel="stylesheet" media="all" href="/styles/moments/style.css">
     <!-- main stylesheet -->
 
     <!--
@@ -46,35 +43,6 @@
 
         <div class="main wrapper clearfix">
 
-            <!-- header -->
-            <!-- featured article -->
-            <section class="featured">
-
-                <article class="post-68 post type-post status-publish format-gallery sticky hentry category-thoughts">
-                    <header>
-                        <!-- begin postmeta -->
-                        <div class="postmeta">
-                            <span><i class="fa fa-clock-o"></i> Dec 6, 2013</span>
-                            <span><i class="fa fa-user"></i> Posted by Mark Johnson</span>
-                            <span><i class="fa fa-bookmark"></i> <a href="http://demo.s5themes.com/moments/category/thoughts/" title="View all posts in Thoughts">Thoughts</a></span>
-                            <span><i class="fa fa-comments"></i> <a href="http://demo.s5themes.com/moments/2013/12/06/creating-great-experiences-for-web-and-mobile/#respond" title="Comment on CREATING GREAT EXPERIENCES FOR WEB AND MOBILE">0 comments</a></span>
-                        </div>
-                        <!-- end postmeta -->
-
-                        <!-- begin post icon -->
-                        <div class="icon">
-                            <i class="fa fa-picture-o fa-2x"></i>
-                        </div>
-                        <!-- end post icon -->
-
-                        <h1><a href="http://demo.s5themes.com/moments/2013/12/06/creating-great-experiences-for-web-and-mobile/">CREATING GREAT EXPERIENCES FOR WEB AND MOBILE</a></h1>
-                        <a class="featured_post">Featured Post</a>
-
-                    </header>
-                </article>
-
-            </section>
-            <!-- featured article -->
             <!-- Include the view file for the current controller/route -->
             <%- body %>
         </div>
@@ -109,6 +77,19 @@
         </footer>
     </div>
     <!-- end footer-container -->
+    <%-console.log(sails.config.syte.disqus.shortname)%>
+    <script type="text/javascript">
 
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "<%-sails.config.syte.disqus.shortname%>"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
     </body>
 </html>

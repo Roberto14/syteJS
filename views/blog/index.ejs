@@ -1,0 +1,95 @@
+<!-- header -->
+<!-- featured article -->
+<section class="featured">
+
+    <% if(typeof featured != 'undefined') {%>
+    <article>
+        <header>
+            <!-- begin postmeta -->
+            <div class="postmeta">
+                <% var date = new Date(featured.date).toDateString().split(' '); %>
+                <span><i class="fa fa-clock-o"></i> <%- date[1] + " " + date[2] + ", " + date[3]%></span>
+                <span><i class="fa fa-user"></i> Posted by <%= featured.blog_name%></span>
+                <span><i class="fa fa-retweet"></i> <a href="http://www.tumblr.com/reblog/<%=featured.id%>/<%=featured.reblog_key%>" target="_blank"  title="Reblog on Tumblr">Reblog</a></span>
+                <span><i class="fa fa-reply-all"></i> <a href="<%=featured.post_url%>#notes" target="_blank" title="Post Notes"><%=featured.note_count%> notes</a></span>
+                <span><i class="fa fa-comments-o"></i><a href="/blog/post/<%= featured.id %>#disqus_thread">Comments</a></span>
+        </div>
+            <!-- end postmeta -->
+
+            <!-- begin post type configurations -->
+            <% var title,icon; %>
+            <% switch (featured.type){
+                  case "audio": title = featured.artist ? featured.artist : featured.source_title;
+                      title += " - " + featured.track_name;
+                      icon = "music"
+                      break;
+                  case "chat": title = featured.title ? featured.title : "Chat";
+                      icon = "comments"
+                      break;
+                  case "link": title = featured.title ;
+                      icon = "link"
+                      break;
+                  case "photo": title = featured.caption.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) + (featured.caption.length > 40 ? " ..." : "");
+                      icon = "music"
+                      break;
+                  case "quote": title = "Quote by " + featured.source;
+                      icon = "quote-right"
+                      break;
+                  case "text": title = post.title;
+                      icon = "pencil"
+                      break;
+                  case "video": title = featured.caption.replace(/<(?:.|\n)*?>/gm, '').substring(0,40) + (featured.caption.length > 40 ? " ..." : "") ;
+                      icon = "film"
+                      break;
+                  default:
+            } %>
+            <!-- end post type configurations -->
+
+            <!-- begin post icon -->
+            <div class="icon">
+                <i class="fa fa-<%=icon%> fa-2x"></i>
+            </div>
+            <!-- end post icon -->
+
+            <h1><a href="/blog/post/<%= featured.id%>"><%=title%></a></h1>
+
+            <% featured.tags.forEach(function(tag){%>
+                <a class="featured_tag" href="/blog/tagged/<%= tag %>"><%= tag %></a>
+            <% }) %>
+
+        </header>
+    </article>
+    <% } %>
+
+</section>
+<!-- featured article -->
+
+<!-- Default home page -->
+
+<div class="main_content">
+
+    <!-- section content -->
+    <section class="content">
+
+        <% _.each(posts, function (post) { %>
+            <%- partial('partials/'+post.type, {post: post}) %>
+        <% }) %>
+
+        <!-- begin #pagination -->
+        <div class="emm-paginate">
+            <span class="emm-title">Pages:</span>
+            <span class="emm-page emm-current">1</span>
+            <a href="http://demo.s5themes.com/moments/page/2/" class="emm-page">2</a>
+            <a href="http://demo.s5themes.com/moments/page/3/" class="emm-page">3</a>
+            <a href="http://demo.s5themes.com/moments/page/4/" class="emm-page">4</a>
+            <a href="http://demo.s5themes.com/moments/page/2/" class="emm-next">›</a>
+        </div>
+        <!-- end #pagination -->
+
+    </section>
+    <!-- section content -->
+
+    <%- partial('partials/sidebar')%>
+
+</div>
+<!-- .main_content-->
